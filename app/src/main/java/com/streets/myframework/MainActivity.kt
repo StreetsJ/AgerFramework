@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 }
 
 class MyView(private val context: Context, private val drawable: () -> List<MyBoxes>) {
-
+    private val roundedRadius = 30f
     inner class ActualView: View(context) {
         override fun onDraw(canvas: Canvas) {
             super.onDraw(canvas)
@@ -38,7 +38,7 @@ class MyView(private val context: Context, private val drawable: () -> List<MyBo
             val rectForDrawing = drawable()
 
             rectForDrawing.forEach {
-                canvas.drawRect(it.box, it.mColor)
+                canvas.drawRoundRect(it.box, roundedRadius, roundedRadius, it.mColor)
             }
         }
     }
